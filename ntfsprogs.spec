@@ -92,12 +92,10 @@ Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description -n gnome-vfs2-module-ntfs
-NTFS module for gnome-vfs. It allows access to NTFS volumes from
-userspace (without using kernel drivers)
+NTFS module for gnome-vfs.
 
 %description -n gnome-vfs2-module-ntfs -l pl
-Modu³ NTFS dla gnome-vfs pozwalaj±cy na dostêp do partycji NTFS bez
-u¿ywania modu³ów j±dra.
+Modu³ NTFS dla gnome-vfs.
 
 %prep
 %setup -q -a1
