@@ -1,0 +1,23 @@
+--- ntfsprogs-1.8.2/include/endians.h.orig	2004-01-07 11:43:11.000000000 +0100
++++ ntfsprogs-1.8.2/include/endians.h	2004-01-11 22:35:13.724651192 +0100
+@@ -87,13 +87,13 @@
+ #define __cpu_to_le32(x) bswap_32(x)
+ #define __cpu_to_le64(x) bswap_64(x)
+ 
+-#define __constant_le16_to_cpu(x) __bswap_constant_16(x)
+-#define __constant_le32_to_cpu(x) __bswap_constant_32(x)
+-#define __constant_le64_to_cpu(x) __bswap_constant_64(x)
+-
+-#define __constant_cpu_to_le16(x) __bswap_constant_16(x)
+-#define __constant_cpu_to_le32(x) __bswap_constant_32(x)
+-#define __constant_cpu_to_le64(x) __bswap_constant_64(x)
++#define __constant_le16_to_cpu(x) bswap_16(x)
++#define __constant_le32_to_cpu(x) bswap_32(x)
++#define __constant_le64_to_cpu(x) bswap_64(x)
++
++#define __constant_cpu_to_le16(x) bswap_16(x)
++#define __constant_cpu_to_le32(x) bswap_32(x)
++#define __constant_cpu_to_le64(x) bswap_64(x)
+ 
+ #else
+ 
