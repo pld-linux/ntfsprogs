@@ -1,3 +1,7 @@
+#
+# Conditional build:
+%bcond_without	gnome	# don't build gnome-vfs2 module
+#
 Summary:	NTFS filesystem libraries and utilities
 Summary(pl):	Narzêdzia i biblioteki do obs³ugi systemu plików NTFS
 Name:		ntfsprogs
@@ -17,7 +21,9 @@ URL:		http://linux-ntfs.sf.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gcc >= 3.1
-BuildRequires:	libtool
+%{?with_gnome:BuildRequires:	gnome-vfs2-devel >= 2.0}
+BuildRequires:	libtool >= 1:1.4.2-9
+%{?with_gnome:BuildRequires:	pkgconfig}
 Obsoletes:	linux-ntfs
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -81,6 +87,18 @@ This package contains the static version of libntfs library.
 %description static -l pl
 Ten pakiet zawiera statyczn± wersjê biblioteki libntfs.
 
+%package -n gnome-vfs2-module-ntfs
+Summary:	NTFS module for gnome-vfs
+Summary(pl):	Modu³ NTFS dla gnome-vfs
+Group:		Libraries
+Requires:	%{name} = %{version}-%{release}
+
+%description -n gnome-vfs2-module-ntfs
+NTFS module for gnome-vfs.
+
+%description -n gnome-vfs2-module-ntfs -l pl
+Modu³ NTFS dla gnome-vfs.
+
 %prep
 %setup -q -a1 
 %patch0 -p1
@@ -97,7 +115,8 @@ chmod -Rf u+w .
 
 # -fms-extensions needed to compile typedefed unnamed structs with gcc 3.3
 CFLAGS="%{rpmcflags} -fms-extensions"
-%configure
+%configure \
+	%{!?with_gnome:--disable-gnome-vfs}
 
 %{__make}
 
@@ -106,6 +125,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make}  install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+rm -f $RPM_BUILD_ROOT%{_libdir}/gnome-vfs-2.0/modules/lib*.{la,a}
 
 %clean
 rm -rf "$RPM_BUILD_ROOT"
@@ -139,3 +160,10 @@ rm -rf "$RPM_BUILD_ROOT"
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/lib*.a
+
+%if %{with gnome}
+%files -n gnome-vfs2-module-ntfs
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/gnome-vfs-2.0/modules/libntfs-gnomevfs.so*
+%{_sysconfdir}/gnome-vfs-2.0/modules/libntfs.conf
+%endif
