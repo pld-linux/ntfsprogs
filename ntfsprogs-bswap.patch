@@ -1,5 +1,5 @@
---- ntfsprogs-1.8.2/include/endians.h.orig	2004-01-07 10:43:11.000000000 +0000
-+++ ntfsprogs-1.8.2/include/endians.h	2004-01-11 21:47:16.000000000 +0000
+--- ntfsprogs-1.8.2/include/ntfs/endians.h.orig	2004-01-07 10:43:11.000000000 +0000
++++ ntfsprogs-1.8.2/include/ntfs/endians.h	2004-01-11 21:47:16.000000000 +0000
 @@ -87,6 +87,27 @@
  #define __cpu_to_le32(x) bswap_32(x)
  #define __cpu_to_le64(x) bswap_64(x)
