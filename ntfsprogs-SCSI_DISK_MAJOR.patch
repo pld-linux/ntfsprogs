@@ -1,11 +1,42 @@
---- ntfsprogs-1.8.0/ntfsprogs/mkntfs.c~	2003-11-19 10:31:26.000000000 +0000
-+++ ntfsprogs-1.8.0/ntfsprogs/mkntfs.c	2004-01-05 20:35:30.000000000 +0000
-@@ -79,7 +79,7 @@
+--- ntfsprogs-1.8.2/ntfsprogs/mkntfs.c.orig	2004-01-06 17:40:02.000000000 +0100
++++ ntfsprogs-1.8.2/ntfsprogs/mkntfs.c	2004-01-11 22:23:38.781298640 +0100
+@@ -78,9 +78,24 @@
+ #	define MAJOR(dev)	((dev) >> 8)
  #	define MINOR(dev)	((dev) & 0xff)
  #endif
- #ifndef SCSI_BLK_MAJOR
+-#ifndef SCSI_BLK_MAJOR
 -#	define SCSI_BLK_MAJOR(m)	((m) == SCSI_DISK_MAJOR || \
-+#	define SCSI_BLK_MAJOR(m)	((m) == SCSI_DISK0_MAJOR || \
- 					 (m) == SCSI_CDROM_MAJOR)
+-					 (m) == SCSI_CDROM_MAJOR)
++#ifndef SCSI_DISK8_MAJOR
++#	define SCSI_DISK8_MAJOR 128
++#endif
++#ifndef SCSI_DISK15_MAJOR
++#	define SCSI_DISK15_MAJOR 135
++#endif
++#ifndef SCSI_DISK_MAJOR
++#	define SCSI_DISK_MAJOR(M) ((M) == SCSI_DISK0_MAJOR || \
++	  ((M) >= SCSI_DISK1_MAJOR && (M) <= SCSI_DISK7_MAJOR) || \
++	  ((M) >= SCSI_DISK8_MAJOR && (M) <= SCSI_DISK15_MAJOR))
++#endif
++#ifndef	IDE_DISK_MAJOR
++#	define IDE_DISK_MAJOR(M) \
++	  ((M) == IDE0_MAJOR || (M) == IDE1_MAJOR || \
++	   (M) == IDE2_MAJOR || (M) == IDE3_MAJOR || \
++	   (M) == IDE4_MAJOR || (M) == IDE5_MAJOR || \
++	   (M) == IDE6_MAJOR || (M) == IDE7_MAJOR || \
++	   (M) == IDE8_MAJOR || (M) == IDE9_MAJOR)
  #endif
  #include <limits.h>
+ 
+@@ -2600,9 +2615,9 @@
+ 		fprintf(stderr, "mkntfs forced anyway.\n");
+ 	}
+ #ifdef HAVE_LINUX_MAJOR_H
+-	else if ((MAJOR(sbuf.st_rdev) == HD_MAJOR &&
++	else if ((IDE_DISK_MAJOR(MAJOR(sbuf.st_rdev)) &&
+ 			MINOR(sbuf.st_rdev) % 64 == 0) ||
+-			(SCSI_BLK_MAJOR(MAJOR(sbuf.st_rdev)) &&
++			(SCSI_DISK_MAJOR(MAJOR(sbuf.st_rdev)) &&
+ 			MINOR(sbuf.st_rdev) % 16 == 0)) {
+ 		err_exit("%s is entire device, not just one partition!\n",
+ 				vol->dev->d_name);
