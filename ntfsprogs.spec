@@ -11,6 +11,7 @@ Source0:	http://dl.sourceforge.net/linux-ntfs/%{name}-%{version}.tar.gz
 Source1:	http://dl.sourceforge.net/linux-ntfs/ntfsdoc-%{docver}.tar.bz2
 # Source1-md5:	b17f395088740202e735b9954d71b295
 Patch0:		%{name}-noc++.patch
+Patch1:		%{name}-gcc33.patch
 URL:		http://linux-ntfs.sf.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -81,7 +82,8 @@ Ten pakiet zawiera statyczn± wersjê biblioteki libntfs.
 
 %prep
 %setup -q -a1
-%patch -p1
+%patch0 -p1
+%patch1 -p1
 
 %build
 %{__libtoolize}
@@ -89,6 +91,9 @@ Ten pakiet zawiera statyczn± wersjê biblioteki libntfs.
 %{__autoconf}
 %{__autoheader}
 %{__automake}
+
+# -fms-extensions needed to compile typedefed unnamed structs with gcc 3.3
+CFLAGS="%{rpmcflags} -fms-extensions"
 %configure
 
 %{__make}
