@@ -1,17 +1,16 @@
 Summary:	NTFS filesystem libraries and utilities
 Summary(pl):	Narzêdzia i biblioteki do obs³ugi systemu plików NTFS
 Name:		ntfsprogs
-Version:	1.7.1
+Version:	1.8.0
 %define	docver	0.4
-Release:	1
+Release:	0.1
 License:	GPL
 Group:		Applications/System
-Source0:	http://dl.sourceforge.net/linux-ntfs/%{name}-%{version}.tar.gz
-# Source0-md5:	3bac306e0923b142bb82b4592e49d239
+Source0:	http://dl.sourceforge.net/linux-ntfs/%{name}-%{version}beta.tar.gz
+# Source0-md5:	8507a9fe61e638c211a72a90d3b2e141
 Source1:	http://dl.sourceforge.net/linux-ntfs/ntfsdoc-%{docver}.tar.bz2
 # Source1-md5:	b17f395088740202e735b9954d71b295
-Patch0:		%{name}-noc++.patch
-Patch1:		%{name}-gcc33.patch
+Patch0:		%{name}-gcc33.patch
 URL:		http://linux-ntfs.sf.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -81,9 +80,8 @@ This package contains the static version of libntfs library.
 Ten pakiet zawiera statyczn± wersjê biblioteki libntfs.
 
 %prep
-%setup -q -a1
+%setup -q -a1 -n ntfsprogs-1.8.0beta
 %patch0 -p1
-%patch1 -p1
 
 %build
 %{__libtoolize}
@@ -115,7 +113,11 @@ rm -rf "$RPM_BUILD_ROOT"
 %doc AUTHORS CREDITS ChangeLog NEWS README TODO*
 %attr(755,root,root) %{_bindir}/ntfsfix
 %attr(755,root,root) %{_bindir}/ntfsinfo
+%attr(755,root,root) %{_bindir}/ntfscat
+%attr(755,root,root) %{_bindir}/ntfscluster
+%attr(755,root,root) %{_bindir}/ntfsls
 %attr(755,root,root) %{_sbindir}/mkntfs
+%attr(755,root,root) %{_sbindir}/ntfsclone
 %attr(755,root,root) %{_sbindir}/ntfslabel
 %attr(755,root,root) %{_sbindir}/ntfsresize
 %attr(755,root,root) %{_sbindir}/ntfsundelete
