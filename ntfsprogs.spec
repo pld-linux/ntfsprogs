@@ -32,11 +32,11 @@ Linux-NTFS currently consists of a library and utilities. This package
 contains the following utilities:
 
 - ntfsfix - attempt to fix an NTFS partition that has been damaged by
-  the Linux NTFS driver. It should be run every time after you have
-  used the Linux NTFS driver to write to an NTFS partition to prevent
-  massive data corruption from happening when Windows mounts the
-  partition. IMPORTANT: Run this only *after* unmounting the partition
-  in Linux but *before* rebooting into Windows NT/2000!
+  the Linux NTFS driver. It should be run every time after you have used
+  the Linux NTFS driver to write to an NTFS partition to prevent massive
+  data corruption from happening when Windows mounts the partition.
+  IMPORTANT: Run this only *after* unmounting the partition in Linux but
+  *before* rebooting into Windows NT/2000!
 - mkntfs - format a partition with the NTFS filesystem.
 - ntfslabel - display/change the label of an NTFS partition.
 - ntfsundelete - recover deleted files from an NTFS volume.
@@ -50,10 +50,10 @@ Aktualnie sk³ada siê z biblioteki i narzêdzi. Pakiet zawiera
 nastêpuj±ce narzêdzia:
 
 - ntfsfix - próbuje naprawiaæ partycjê NTFS uszkodzone przez linuksowy
-driver do NTFS. Powinien byæ uruchamiany po ka¿dym zapisie na partycji
-NTFS, aby zapobiec masowemu zniszczeniu danych. WA¯NE: uruchamiaj ten
-program tylko *po* odmontowaniu partycji pod Linuksem, ale *przed*
-uruchomieniem Windows NT/2000!
+  driver do NTFS. Powinien byæ uruchamiany po ka¿dym zapisie na partycji
+  NTFS, aby zapobiec masowemu zniszczeniu danych. WA¯NE: uruchamiaj ten
+  program tylko *po* odmontowaniu partycji pod Linuksem, ale *przed*
+  uruchomieniem Windows NT/2000!
 
 - mkntfs - "formatuje" partycjê NTFS. Szczegó³y w manualu.
 
@@ -92,13 +92,15 @@ Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description -n gnome-vfs2-module-ntfs
-NTFS module for gnome-vfs.
+NTFS module for gnome-vfs. It allows access to NTFS volumes from
+userspace (without using kernel drivers)
 
 %description -n gnome-vfs2-module-ntfs -l pl
-Modu³ NTFS dla gnome-vfs.
+Modu³ NTFS dla gnome-vfs pozwalaj±cy na dostêp do partycji NTFS bez
+u¿ywania modu³ów j±dra.
 
 %prep
-%setup -q -a1 
+%setup -q -a1
 %patch0 -p1
 
 %build
