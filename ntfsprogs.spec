@@ -5,17 +5,16 @@
 Summary:	NTFS filesystem libraries and utilities
 Summary(pl):	Narzêdzia i biblioteki do obs³ugi systemu plików NTFS
 Name:		ntfsprogs
-Version:	1.8.5
+Version:	1.9.0
 %define	docver	0.4
-Release:	2
+Release:	1
 License:	GPL
 Group:		Applications/System
 Source0:	http://dl.sourceforge.net/linux-ntfs/%{name}-%{version}.tar.gz
-# Source0-md5:	26fd774e519ea4a8a7f0c54344f15fea
+# Source0-md5:	225a1eaf3c33010e8045f30dd3a42b0f
 Source1:	http://dl.sourceforge.net/linux-ntfs/ntfsdoc-%{docver}.tar.bz2
 # Source1-md5:	b17f395088740202e735b9954d71b295
 Patch0:		%{name}-gcc33.patch
-Patch1:		%{name}-bswap.patch
 URL:		http://linux-ntfs.sf.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -101,10 +100,8 @@ Modu³ NTFS dla gnome-vfs.
 %prep
 %setup -q -a1 
 %patch0 -p1
-%patch1 -p1
 
 %build
-chmod -Rf u+w .
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
