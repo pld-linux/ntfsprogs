@@ -3,11 +3,11 @@ Summary(pl):	Narzêdzia i biblioteki do obs³ugi systemu plików NTFS
 Name:		ntfsprogs
 Version:	1.8.0
 %define	docver	0.4
-Release:	0.1
+Release:	0.2
 License:	GPL
 Group:		Applications/System
-Source0:	http://dl.sourceforge.net/linux-ntfs/%{name}-%{version}beta.tar.gz
-# Source0-md5:	8507a9fe61e638c211a72a90d3b2e141
+Source0:	http://dl.sourceforge.net/linux-ntfs/%{name}-%{version}beta2.tar.gz
+# Source0-md5:	c2348ddffbd81bd56c160f89118453fa
 Source1:	http://dl.sourceforge.net/linux-ntfs/ntfsdoc-%{docver}.tar.bz2
 # Source1-md5:	b17f395088740202e735b9954d71b295
 Patch0:		%{name}-gcc33.patch
@@ -80,10 +80,11 @@ This package contains the static version of libntfs library.
 Ten pakiet zawiera statyczn± wersjê biblioteki libntfs.
 
 %prep
-%setup -q -a1 -n ntfsprogs-1.8.0beta
+%setup -q -a1 -n ntfsprogs-1.8.0beta2
 %patch0 -p1
 
 %build
+chmod -Rf u+w .
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
@@ -122,8 +123,7 @@ rm -rf "$RPM_BUILD_ROOT"
 %attr(755,root,root) %{_sbindir}/ntfsresize
 %attr(755,root,root) %{_sbindir}/ntfsundelete
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
-%{_mandir}/man8/mkntfs.8*
-%{_mandir}/man8/ntfs*
+%{_mandir}/man8/*
 
 %files devel
 %defattr(644,root,root,755)
