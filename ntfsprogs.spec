@@ -11,6 +11,7 @@ Source0:	http://dl.sourceforge.net/linux-ntfs/%{name}-%{version}.tar.gz
 Source1:	http://dl.sourceforge.net/linux-ntfs/ntfsdoc-%{docver}.tar.bz2
 # Source1-md5:	b17f395088740202e735b9954d71b295
 Patch0:		%{name}-gcc33.patch
+Patch1:		%{name}-SCSI_DISK_MAJOR.patch
 URL:		http://linux-ntfs.sf.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -82,6 +83,7 @@ Ten pakiet zawiera statyczn± wersjê biblioteki libntfs.
 %prep
 %setup -q -a1 
 %patch0 -p1
+%patch1 -p1
 
 %build
 chmod -Rf u+w .
