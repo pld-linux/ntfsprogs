@@ -1,17 +1,18 @@
 Summary:	NTFS filesystem libraries and utilities
 Summary(pl):	Narzêdzia i biblioteki do obs³ugi systemu plików NTFS
 Name:		ntfsprogs
-Version:	1.8.1
+Version:	1.8.2
 %define	docver	0.4
 Release:	1
 License:	GPL
 Group:		Applications/System
 Source0:	http://dl.sourceforge.net/linux-ntfs/%{name}-%{version}.tar.gz
-# Source0-md5:	9799a8a6a85778e5bab7ac83928c6cc8
+# Source0-md5:	eec4909079ac4935b783f55313be4c9c
 Source1:	http://dl.sourceforge.net/linux-ntfs/ntfsdoc-%{docver}.tar.bz2
 # Source1-md5:	b17f395088740202e735b9954d71b295
 Patch0:		%{name}-gcc33.patch
 Patch1:		%{name}-SCSI_DISK_MAJOR.patch
+Patch2:		%{name}-bswap.patch
 URL:		http://linux-ntfs.sf.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -84,6 +85,7 @@ Ten pakiet zawiera statyczn± wersjê biblioteki libntfs.
 %setup -q -a1 
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 chmod -Rf u+w .
