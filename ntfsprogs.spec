@@ -7,7 +7,9 @@ Release:	1
 License:	GPL
 Group:		Applications/System
 Source0:	http://dl.sourceforge.net/linux-ntfs/%{name}-%{version}.tar.gz
+# Source0-md5:	eb3ff0a59182803634559a6367f16221
 Source1:	http://dl.sourceforge.net/linux-ntfs/ntfsdoc-%{docver}.tar.bz2
+# Source1-md5:	b17f395088740202e735b9954d71b295
 Patch0:		%{name}-noc++.patch
 URL:		http://linux-ntfs.sf.net/
 BuildRequires:	autoconf
