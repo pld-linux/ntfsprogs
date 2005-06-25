@@ -5,15 +5,15 @@
 Summary:	NTFS filesystem libraries and utilities
 Summary(pl):	Narzêdzia i biblioteki do obs³ugi systemu plików NTFS
 Name:		ntfsprogs
-Version:	1.9.4
-%define	docver	0.4
+Version:	1.10.0
+%define	docver	0.5
 Release:	1
 License:	GPL
 Group:		Applications/System
 Source0:	http://dl.sourceforge.net/linux-ntfs/%{name}-%{version}.tar.gz
-# Source0-md5:	6fb6465e75582fc70d50966a08dd3ec1
+# Source0-md5:	1d5ea4e33e698a298405e41737711b7d
 Source1:	http://dl.sourceforge.net/linux-ntfs/ntfsdoc-%{docver}.tar.bz2
-# Source1-md5:	b17f395088740202e735b9954d71b295
+# Source1-md5:	d713836df621686785c3230e5788c689
 Patch0:		%{name}-gcc33.patch
 URL:		http://linux-ntfs.sf.net/
 BuildRequires:	autoconf
@@ -139,6 +139,7 @@ rm -rf "$RPM_BUILD_ROOT"
 %attr(755,root,root) %{_bindir}/ntfsls
 %attr(755,root,root) %{_sbindir}/mkntfs
 %attr(755,root,root) %{_sbindir}/ntfsclone
+%attr(755,root,root) %{_sbindir}/ntfscp
 %attr(755,root,root) %{_sbindir}/ntfslabel
 %attr(755,root,root) %{_sbindir}/ntfsresize
 %attr(755,root,root) %{_sbindir}/ntfsundelete
@@ -147,7 +148,7 @@ rm -rf "$RPM_BUILD_ROOT"
 
 %files devel
 %defattr(644,root,root,755)
-%doc ntfsdoc doc/{attribute_definitions,tunable_settings,*.txt}
+%doc ntfsdoc-*/* doc/{attribute_definitions,tunable_settings,*.txt}
 %attr(755,root,root) %{_libdir}/lib*.so
 %{_libdir}/*.la
 %{_includedir}/*
