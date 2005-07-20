@@ -1,17 +1,18 @@
 #
 # Conditional build:
-%bcond_without	gnome	# don't build gnome-vfs2 module
+%bcond_without	gnome		# don't build gnome-vfs2 module
+%bcond_without	ntfsmount	# don't build ntfsmount utility
 #
 Summary:	NTFS filesystem libraries and utilities
 Summary(pl):	Narzêdzia i biblioteki do obs³ugi systemu plików NTFS
 Name:		ntfsprogs
-Version:	1.11.0
+Version:	1.11.1
 %define	docver	0.5
 Release:	1
 License:	GPL
 Group:		Applications/System
 Source0:	http://dl.sourceforge.net/linux-ntfs/%{name}-%{version}.tar.gz
-# Source0-md5:	8f16db85c63561cde745d8953c9b8f8f
+# Source0-md5:	ac28bef6d3c12bf5e90092042f6a5222
 Source1:	http://dl.sourceforge.net/linux-ntfs/ntfsdoc-%{docver}.tar.bz2
 # Source1-md5:	d713836df621686785c3230e5788c689
 Patch0:		%{name}-gcc33.patch
@@ -20,6 +21,7 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gcc >= 3.1
 %{?with_gnome:BuildRequires:	gnome-vfs2-devel >= 2.0}
+%{?with_ntfsmount:BuildRequires:	libfuse-devel >= 2.3.0}
 BuildRequires:	libtool >= 1:1.4.2-9
 %{?with_gnome:BuildRequires:	pkgconfig}
 Obsoletes:	linux-ntfs
@@ -137,6 +139,7 @@ rm -rf "$RPM_BUILD_ROOT"
 %attr(755,root,root) %{_bindir}/ntfscat
 %attr(755,root,root) %{_bindir}/ntfscluster
 %attr(755,root,root) %{_bindir}/ntfsls
+%{?with_ntfsmount:%attr(755,root,root) %{_bindir}/ntfsmount}
 %attr(755,root,root) %{_sbindir}/mkntfs
 %attr(755,root,root) %{_sbindir}/ntfsclone
 %attr(755,root,root) %{_sbindir}/ntfscp
