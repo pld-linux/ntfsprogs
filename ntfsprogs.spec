@@ -156,7 +156,6 @@ rm -rf "$RPM_BUILD_ROOT"
 %attr(755,root,root) %{_bindir}/ntfscat
 %attr(755,root,root) %{_bindir}/ntfscluster
 %attr(755,root,root) %{_bindir}/ntfsls
-%{?with_ntfsmount:%attr(755,root,root) %{_bindir}/ntfsmount}
 %attr(755,root,root) %{_sbindir}/mkntfs
 %attr(755,root,root) %{_sbindir}/ntfsclone
 %attr(755,root,root) %{_sbindir}/ntfscp
@@ -165,7 +164,7 @@ rm -rf "$RPM_BUILD_ROOT"
 %attr(755,root,root) %{_sbindir}/ntfsundelete
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 %{_mandir}/man8/mkntfs.8*
-%{_mandir}/man8/ntfs[^m][^o]*.8*
+%{_mandir}/man8/ntfs[!m][!o]*.8*
 
 %files devel
 %defattr(644,root,root,755)
@@ -177,7 +176,7 @@ rm -rf "$RPM_BUILD_ROOT"
 %if %{with fuse}
 %files fuse
 %defattr(644,root,root,755)
-%{?with_fuse:%attr(755,root,root) %{_bindir}/ntfsmount}
+%attr(755,root,root) %{_bindir}/ntfsmount
 %{_mandir}/man8/ntfsmount.8*
 %endif
 
