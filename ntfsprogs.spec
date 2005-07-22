@@ -74,23 +74,6 @@ libntfs.
 Pliki nag³ówkowe potrzebne do budowania programów korzystaj±cych z
 libntfs.
 
-%package fuse
-Summary:	NTFS FUSE module (ntfsmount)
-Summary(pl):	Modu³ FUSE dla NTFS (ntfsmount)
-Group:		Base/Utilities
-Requires:	%{name} = %{version}-%{release}
-
-%description fuse
-This package contains the ntfsmount utility which is an NTFS filesystem in
-userspace (FUSE) module allowing users to mount an NTFS filesystem from
-userspace and accessing it using the functionality provided by the NTFS
-library (libntfs).
-
-%description fuse -l pl
-Pakiet zawiera narzêdzie ntfmount które jest modu³em FUSE pozwalaj±cym
-u¿ytkownikom na dostêp do systemu plików NTFS w przestrzeni u¿ytkownika
-wykorzystuj±c funkcjonalno¶æ biblioteki libntfs.
-
 %package static
 Summary:	Static version of libntfs
 Summary(pl):	Statyczna wersja libntfs
@@ -103,6 +86,24 @@ This package contains the static version of libntfs library.
 
 %description static -l pl
 Ten pakiet zawiera statyczn± wersjê biblioteki libntfs.
+
+%package fuse
+Summary:	NTFS FUSE module (ntfsmount)
+Summary(pl):	Modu³ FUSE dla NTFS (ntfsmount)
+Group:		Base/Utilities
+Requires:	%{name} = %{version}-%{release}
+
+%description fuse
+This package contains the ntfsmount utility which is an NTFS
+filesystem in userspace (FUSE) module allowing users to mount an NTFS
+filesystem from userspace and accessing it using the functionality
+provided by the NTFS library (libntfs).
+
+%description fuse -l pl
+Pakiet zawiera narzêdzie ntfmount, które jest modu³em FUSE
+pozwalaj±cym u¿ytkownikom na dostêp do systemu plików NTFS w
+przestrzeni u¿ytkownika wykorzystuj±c funkcjonalno¶æ biblioteki
+libntfs.
 
 %package -n gnome-vfs2-module-ntfs
 Summary:	NTFS module for gnome-vfs
@@ -173,6 +174,10 @@ rm -rf "$RPM_BUILD_ROOT"
 %{_libdir}/*.la
 %{_includedir}/*
 
+%files static
+%defattr(644,root,root,755)
+%{_libdir}/lib*.a
+
 %if %{with fuse}
 %files fuse
 %defattr(644,root,root,755)
@@ -187,7 +192,3 @@ rm -rf "$RPM_BUILD_ROOT"
 %{_sysconfdir}/gnome-vfs-2.0/modules/libntfs.conf
 %{_mandir}/man8/libntfs-gnomevfs.8*
 %endif
-
-%files static
-%defattr(644,root,root,755)
-%{_libdir}/lib*.a
