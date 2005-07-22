@@ -1,7 +1,7 @@
 #
 # Conditional build:
 %bcond_without	gnome		# don't build gnome-vfs2 module
-%bcond_without	ntfsmount	# don't build ntfsmount utility
+%bcond_without	fuse		# don't build ntfsmount utility
 #
 Summary:	NTFS filesystem libraries and utilities
 Summary(pl):	Narzêdzia i biblioteki do obs³ugi systemu plików NTFS
@@ -21,7 +21,7 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gcc >= 3.1
 %{?with_gnome:BuildRequires:	gnome-vfs2-devel >= 2.0}
-%{?with_ntfsmount:BuildRequires:	libfuse-devel >= 2.3.0}
+%{?with_fuse:BuildRequires:	libfuse-devel >= 2.3.0}
 BuildRequires:	libtool >= 1:1.4.2-9
 %{?with_gnome:BuildRequires:	pkgconfig}
 Obsoletes:	linux-ntfs
@@ -73,6 +73,23 @@ libntfs.
 %description devel -l pl
 Pliki nag³ówkowe potrzebne do budowania programów korzystaj±cych z
 libntfs.
+
+%package fuse
+Summary:	NTFS FUSE module (ntfsmount)
+Summary(pl):	Modu³ FUSE dla NTFS (ntfsmount)
+Group:		Base/Utilities
+Requires:	%{name} = %{version}-%{release}
+
+%description fuse
+This package contains the ntfsmount utility which is an NTFS filesystem in
+userspace (FUSE) module allowing users to mount an NTFS filesystem from
+userspace and accessing it using the functionality provided by the NTFS
+library (libntfs).
+
+%description fuse -l pl
+Pakiet zawiera narzêdzie ntfmount które jest modu³em FUSE pozwalaj±cym
+u¿ytkownikom na dostêp do systemu plików NTFS w przestrzeni u¿ytkownika
+wykorzystuj±c funkcjonalno¶æ biblioteki libntfs.
 
 %package static
 Summary:	Static version of libntfs
@@ -147,7 +164,8 @@ rm -rf "$RPM_BUILD_ROOT"
 %attr(755,root,root) %{_sbindir}/ntfsresize
 %attr(755,root,root) %{_sbindir}/ntfsundelete
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
-%{_mandir}/man8/*
+%{_mandir}/man8/mkntfs.8*
+%{_mandir}/man8/ntfs[^m][^o]*.8*
 
 %files devel
 %defattr(644,root,root,755)
@@ -156,13 +174,21 @@ rm -rf "$RPM_BUILD_ROOT"
 %{_libdir}/*.la
 %{_includedir}/*
 
-%files static
+%if %{with fuse}
+%files fuse
 %defattr(644,root,root,755)
-%{_libdir}/lib*.a
+%{?with_fuse:%attr(755,root,root) %{_bindir}/ntfsmount}
+%{_mandir}/man8/ntfsmount.8*
+%endif
 
 %if %{with gnome}
 %files -n gnome-vfs2-module-ntfs
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/gnome-vfs-2.0/modules/libntfs-gnomevfs.so*
 %{_sysconfdir}/gnome-vfs-2.0/modules/libntfs.conf
+%{_mandir}/man8/libntfs-gnomevfs.8*
 %endif
+
+%files static
+%defattr(644,root,root,755)
+%{_libdir}/lib*.a
