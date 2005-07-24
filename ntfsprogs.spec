@@ -16,6 +16,7 @@ Source0:	http://dl.sourceforge.net/linux-ntfs/%{name}-%{version}.tar.gz
 Source1:	http://dl.sourceforge.net/linux-ntfs/ntfsdoc-%{docver}.tar.bz2
 # Source1-md5:	d713836df621686785c3230e5788c689
 Patch0:		%{name}-gcc33.patch
+Patch1:		%{name}-pkgconfig.patch
 URL:		http://linux-ntfs.sf.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -120,6 +121,7 @@ Modu³ NTFS dla gnome-vfs.
 %prep
 %setup -q -a1
 %patch0 -p1
+%patch1 -p1
 
 %build
 %{__libtoolize}
@@ -131,7 +133,8 @@ Modu³ NTFS dla gnome-vfs.
 # -fms-extensions needed to compile typedefed unnamed structs with gcc 3.3
 CFLAGS="%{rpmcflags} -fms-extensions"
 %configure \
-	%{!?with_gnome:--disable-gnome-vfs}
+	--%{?with_fuse:en}%{!?with_fuse:dis}able-fuse-module \
+	--%{?with_gnome:en}%{!?with_gnome:dis}able-gnome-vfs
 
 %{__make}
 
