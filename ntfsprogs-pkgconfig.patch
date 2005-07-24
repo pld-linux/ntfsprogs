@@ -1,0 +1,11 @@
+--- ntfsprogs-1.11.1/configure.ac.orig	2005-07-20 10:11:35.000000000 +0200
++++ ntfsprogs-1.11.1/configure.ac	2005-07-24 13:29:55.814714776 +0200
+@@ -116,6 +116,8 @@
+ # Enable large file support.
+ AC_SYS_LARGEFILE
+ 
++PKG_PROG_PKG_CONFIG
++
+ # Autodetect whether to build Gnome VFS or not.
+ compile_gnome_vfs=false
+ if test "$enable_gnome_vfs" != "no"; then
