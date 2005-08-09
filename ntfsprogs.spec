@@ -53,12 +53,16 @@ Aktualnie sk³ada siê z biblioteki i narzêdzi. Pakiet zawiera
 nastêpuj±ce narzêdzia:
 
 - ntfsfix - próbuje naprawiaæ partycjê NTFS uszkodzone przez linuksowy
-  driver do NTFS. Powinien byæ uruchamiany po ka¿dym zapisie na partycji
-  NTFS, aby zapobiec masowemu zniszczeniu danych. WA¯NE: uruchamiaj ten
-  program tylko *po* odmontowaniu partycji pod Linuksem, ale *przed*
-  uruchomieniem Windows NT/2000!
-- mkntfs - "formatuje" partycjê NTFS. Szczegó³y w manualu.
-- ntfsundelete - odzyskuje usuniete pliki z partycji NTFS
+  sterownik do NTFS. Powinien byæ uruchamiany po ka¿dym zapisie na
+  partycji NTFS, aby zapobiec masowemu zniszczeniu danych. WA¯NE:
+  nale¿y uruchamiaæ ten program tylko *po* odmontowaniu partycji pod
+  Linuksem, ale *przed* uruchomieniem Windows NT/2000!
+- mkntfs - "formatuje" partycjê NTFS.
+- ntfslabel - wy¶wietla/zmienia etykietê partycji NTFS.
+- ntfsundelete - odzyskuje usuniête pliki z wolumenu NTFS.
+- ntfsresize - zmienia rozmiar wolumenu NTFS.
+
+Wiêcej informacji na temat tych narzêdzi mo¿na znale¼æ w manualach.
 
 %package devel
 Summary:	Files required to compile software that uses libntfs
