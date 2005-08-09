@@ -57,8 +57,8 @@ nastêpuj±ce narzêdzia:
   NTFS, aby zapobiec masowemu zniszczeniu danych. WA¯NE: uruchamiaj ten
   program tylko *po* odmontowaniu partycji pod Linuksem, ale *przed*
   uruchomieniem Windows NT/2000!
-
 - mkntfs - "formatuje" partycjê NTFS. Szczegó³y w manualu.
+- ntfsundelete - odzyskuje usuniete pliki z partycji NTFS
 
 %package devel
 Summary:	Files required to compile software that uses libntfs
