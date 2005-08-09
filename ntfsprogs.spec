@@ -124,8 +124,10 @@ Modu³ NTFS dla gnome-vfs.
 %patch1 -p1
 
 %build
+echo 'AC_DEFUN([AM_PATH_LIBGCRYPT],[:])' > fake-am_path_libgcrypt.m4
+
 %{__libtoolize}
-%{__aclocal}
+%{__aclocal} -I .
 %{__autoconf}
 %{__autoheader}
 %{__automake}
