@@ -48,8 +48,8 @@ contains the following utilities:
 You can find more information about these utilities in their manuals.
 
 %description -l pl
-Projekt Linux-NTFS ma na celu dostarczyæ pe³n± obs³ugê NTFS pod Linuksem.
-Aktualnie sk³ada siê z biblioteki i narzêdzi. Pakiet zawiera
+Projekt Linux-NTFS ma na celu dostarczyæ pe³n± obs³ugê NTFS pod
+Linuksem. Aktualnie sk³ada siê z biblioteki i narzêdzi. Pakiet zawiera
 nastêpuj±ce narzêdzia:
 
 - ntfsfix - próbuje naprawiaæ partycjê NTFS uszkodzone przez linuksowy
