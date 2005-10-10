@@ -6,13 +6,13 @@
 Summary:	NTFS filesystem libraries and utilities
 Summary(pl):	Narzêdzia i biblioteki do obs³ugi systemu plików NTFS
 Name:		ntfsprogs
-Version:	1.11.2
+Version:	1.12.0
 %define	docver	0.5
 Release:	1
 License:	GPL
 Group:		Applications/System
 Source0:	http://dl.sourceforge.net/linux-ntfs/%{name}-%{version}.tar.gz
-# Source0-md5:	db39d930f581e55c9731718f08a5b6f0
+# Source0-md5:	dc19454b01aee8f8c632a5afc1896a86
 Source1:	http://dl.sourceforge.net/linux-ntfs/ntfsdoc-%{docver}.tar.bz2
 # Source1-md5:	d713836df621686785c3230e5788c689
 Patch0:		%{name}-gcc33.patch
@@ -39,7 +39,7 @@ contains the following utilities:
   the Linux NTFS driver to write to an NTFS partition to prevent massive
   data corruption from happening when Windows mounts the partition.
   IMPORTANT: Run this only *after* unmounting the partition in Linux but
-  *before* rebooting into Windows NT/2000!
+  - *before* rebooting into Windows NT/2000!
 - mkntfs - format a partition with the NTFS filesystem.
 - ntfslabel - display/change the label of an NTFS partition.
 - ntfsundelete - recover deleted files from an NTFS volume.
@@ -54,9 +54,9 @@ nastêpuj±ce narzêdzia:
 
 - ntfsfix - próbuje naprawiaæ partycjê NTFS uszkodzone przez linuksowy
   sterownik do NTFS. Powinien byæ uruchamiany po ka¿dym zapisie na
-  partycji NTFS, aby zapobiec masowemu zniszczeniu danych. WA¯NE:
-  nale¿y uruchamiaæ ten program tylko *po* odmontowaniu partycji pod
-  Linuksem, ale *przed* uruchomieniem Windows NT/2000!
+  partycji NTFS, aby zapobiec masowemu zniszczeniu danych. WA¯NE: nale¿y
+  uruchamiaæ ten program tylko *po* odmontowaniu partycji pod Linuksem,
+  ale *przed* uruchomieniem Windows NT/2000!
 - mkntfs - "formatuje" partycjê NTFS.
 - ntfslabel - wy¶wietla/zmienia etykietê partycji NTFS.
 - ntfsundelete - odzyskuje usuniête pliki z wolumenu NTFS.
