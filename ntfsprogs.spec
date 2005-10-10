@@ -39,7 +39,7 @@ contains the following utilities:
   the Linux NTFS driver to write to an NTFS partition to prevent massive
   data corruption from happening when Windows mounts the partition.
   IMPORTANT: Run this only *after* unmounting the partition in Linux but
-  - *before* rebooting into Windows NT/2000!
+  *before* rebooting into Windows NT/2000!
 - mkntfs - format a partition with the NTFS filesystem.
 - ntfslabel - display/change the label of an NTFS partition.
 - ntfsundelete - recover deleted files from an NTFS volume.
