@@ -151,9 +151,13 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT
 
 rm -f $RPM_BUILD_ROOT%{_libdir}/gnome-vfs-2.0/modules/lib*.{la,a}
+# instead of hardlink
+echo '.so mkntfs.8' > $RPM_BUILD_ROOT%{_mandir}/man8/mkfs.ntfs.8
+# not installed
+echo '.so ntfsmount.8' > $RPM_BUILD_ROOT%{_mandir}/man8/mount.ntfs-fuse.8
 
 %clean
-rm -rf "$RPM_BUILD_ROOT"
+rm -rf $RPM_BUILD_ROOT
 
 %post	-p /sbin/ldconfig
 %postun	-p /sbin/ldconfig
@@ -166,14 +170,18 @@ rm -rf "$RPM_BUILD_ROOT"
 %attr(755,root,root) %{_bindir}/ntfscat
 %attr(755,root,root) %{_bindir}/ntfscluster
 %attr(755,root,root) %{_bindir}/ntfsls
+%attr(755,root,root) %{_sbindir}/mkfs.ntfs
 %attr(755,root,root) %{_sbindir}/mkntfs
+%attr(755,root,root) %{_sbindir}/mount.ntfs-fuse
 %attr(755,root,root) %{_sbindir}/ntfsclone
 %attr(755,root,root) %{_sbindir}/ntfscp
 %attr(755,root,root) %{_sbindir}/ntfslabel
 %attr(755,root,root) %{_sbindir}/ntfsresize
 %attr(755,root,root) %{_sbindir}/ntfsundelete
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
+%{_mandir}/man8/mkfs.ntfs.8*
 %{_mandir}/man8/mkntfs.8*
+%{_mandir}/man8/mount.ntfs-fuse.8*
 %{_mandir}/man8/ntfs[!m][!o]*.8*
 
 %files devel
