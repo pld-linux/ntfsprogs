@@ -6,13 +6,13 @@
 Summary:	NTFS filesystem libraries and utilities
 Summary(pl):	Narzêdzia i biblioteki do obs³ugi systemu plików NTFS
 Name:		ntfsprogs
-Version:	1.12.0
+Version:	1.12.1
 %define	docver	0.5
 Release:	1
 License:	GPL
 Group:		Applications/System
 Source0:	http://dl.sourceforge.net/linux-ntfs/%{name}-%{version}.tar.gz
-# Source0-md5:	dc19454b01aee8f8c632a5afc1896a86
+# Source0-md5:	607b86d45ab65cf9db2255669545006e
 Source1:	http://dl.sourceforge.net/linux-ntfs/ntfsdoc-%{docver}.tar.bz2
 # Source1-md5:	d713836df621686785c3230e5788c689
 Patch0:		%{name}-gcc33.patch
@@ -151,9 +151,9 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT
 
 rm -f $RPM_BUILD_ROOT%{_libdir}/gnome-vfs-2.0/modules/lib*.{la,a}
-# instead of hardlink
+# instead of symlinks
+rm -f $RPM_BUILD_ROOT%{_mandir}/man8/{mkfs.ntfs,mount.ntfs-fuse}.8
 echo '.so mkntfs.8' > $RPM_BUILD_ROOT%{_mandir}/man8/mkfs.ntfs.8
-# not installed
 echo '.so ntfsmount.8' > $RPM_BUILD_ROOT%{_mandir}/man8/mount.ntfs-fuse.8
 
 %clean
@@ -170,18 +170,16 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/ntfscat
 %attr(755,root,root) %{_bindir}/ntfscluster
 %attr(755,root,root) %{_bindir}/ntfsls
-%attr(755,root,root) %{_sbindir}/mkfs.ntfs
 %attr(755,root,root) %{_sbindir}/mkntfs
-%attr(755,root,root) %{_sbindir}/mount.ntfs-fuse
 %attr(755,root,root) %{_sbindir}/ntfsclone
 %attr(755,root,root) %{_sbindir}/ntfscp
 %attr(755,root,root) %{_sbindir}/ntfslabel
 %attr(755,root,root) %{_sbindir}/ntfsresize
 %attr(755,root,root) %{_sbindir}/ntfsundelete
+%attr(755,root,root) /sbin/mkfs.ntfs
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 %{_mandir}/man8/mkfs.ntfs.8*
 %{_mandir}/man8/mkntfs.8*
-%{_mandir}/man8/mount.ntfs-fuse.8*
 %{_mandir}/man8/ntfs[!m][!o]*.8*
 
 %files devel
@@ -199,6 +197,8 @@ rm -rf $RPM_BUILD_ROOT
 %files fuse
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/ntfsmount
+%attr(755,root,root) /sbin/mount.ntfs-fuse
+%{_mandir}/man8/mount.ntfs-fuse.8*
 %{_mandir}/man8/ntfsmount.8*
 %endif
 
