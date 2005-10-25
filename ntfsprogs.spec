@@ -21,6 +21,7 @@ URL:		http://linux-ntfs.sf.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gcc >= 3.1
+BuildRequires:	gnutls-devel
 %{?with_gnome:BuildRequires:	gnome-vfs2-devel >= 2.0}
 %{?with_fuse:BuildRequires:	libfuse-devel >= 2.3.0}
 BuildRequires:	libtool >= 1:1.4.2-9
