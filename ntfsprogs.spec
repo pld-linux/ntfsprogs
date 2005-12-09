@@ -1,5 +1,6 @@
 #
 # Conditional build:
+%bcond_without	crypto		# don't build crypto support
 %bcond_without	gnome		# don't build gnome-vfs2 module
 %bcond_without	fuse		# don't build ntfsmount utility
 #
@@ -21,10 +22,10 @@ URL:		http://linux-ntfs.sf.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gcc >= 3.1
-BuildRequires:	gnutls-devel >= 1.2.3
+%{?with_crypto:BuildRequires:	gnutls-devel >= 1.2.3}
 %{?with_gnome:BuildRequires:	gnome-vfs2-devel >= 2.0}
 %{?with_fuse:BuildRequires:	libfuse-devel >= 2.3.0}
-BuildRequires:	libgcrypt-devel >= 1.2.0
+%{?with_crypto:BuildRequires:	libgcrypt-devel >= 1.2.0}
 BuildRequires:	libtool >= 1:1.4.2-9
 BuildRequires:	pkgconfig
 Obsoletes:	linux-ntfs
@@ -143,6 +144,7 @@ CFLAGS="%{rpmcflags} -fms-extensions"
 %configure \
 	--%{?with_fuse:en}%{!?with_fuse:dis}able-fuse-module \
 	--%{?with_gnome:en}%{!?with_gnome:dis}able-gnome-vfs
+	--%{?with_crypto:en}%{!?with_crypto:dis}able-crypto
 
 %{__make}
 
