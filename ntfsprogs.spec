@@ -132,6 +132,7 @@ Modu³ NTFS dla gnome-vfs.
 
 %build
 echo 'AC_DEFUN([AM_PATH_LIBGCRYPT],[:])' > fake-am_path_libgcrypt.m4
+%{!?with_crypto:echo 'AC_DEFUN([AM_PATH_LIBGNUTLS],[:])' > fake-am_path_libgnutls.m4}
 
 %{__libtoolize}
 %{__aclocal} -I .
@@ -143,7 +144,7 @@ echo 'AC_DEFUN([AM_PATH_LIBGCRYPT],[:])' > fake-am_path_libgcrypt.m4
 CFLAGS="%{rpmcflags} -fms-extensions"
 %configure \
 	--%{?with_fuse:en}%{!?with_fuse:dis}able-fuse-module \
-	--%{?with_gnome:en}%{!?with_gnome:dis}able-gnome-vfs
+	--%{?with_gnome:en}%{!?with_gnome:dis}able-gnome-vfs \
 	--%{?with_crypto:en}%{!?with_crypto:dis}able-crypto
 
 %{__make}
