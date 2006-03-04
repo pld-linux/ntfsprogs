@@ -7,22 +7,21 @@
 Summary:	NTFS filesystem libraries and utilities
 Summary(pl):	Narzêdzia i biblioteki do obs³ugi systemu plików NTFS
 Name:		ntfsprogs
-Version:	1.12.1
+Version:	1.13.0
 %define	docver	0.5
 Release:	1
 License:	GPL
 Group:		Applications/System
 Source0:	http://dl.sourceforge.net/linux-ntfs/%{name}-%{version}.tar.gz
-# Source0-md5:	607b86d45ab65cf9db2255669545006e
+# Source0-md5:	4679cf54fb37527503d7ad44ec5376a8
 Source1:	http://dl.sourceforge.net/linux-ntfs/ntfsdoc-%{docver}.tar.bz2
 # Source1-md5:	d713836df621686785c3230e5788c689
-Patch0:		%{name}-gcc33.patch
-Patch1:		%{name}-pkgconfig.patch
+Patch0:		%{name}-pkgconfig.patch
 URL:		http://linux-ntfs.sf.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gcc >= 3.1
-%{?with_crypto:BuildRequires:	gnutls-devel >= 1.2.3}
+%{?with_crypto:BuildRequires:	gnutls-devel >= 1.2.8}
 %{?with_gnome:BuildRequires:	gnome-vfs2-devel >= 2.0}
 %{?with_fuse:BuildRequires:	libfuse-devel >= 2.3.0}
 %{?with_crypto:BuildRequires:	libgcrypt-devel >= 1.2.0}
@@ -128,12 +127,13 @@ Modu³ NTFS dla gnome-vfs.
 %prep
 %setup -q -a1
 %patch0 -p1
-%patch1 -p1
+
+%if %{without crypto}
+echo 'AC_DEFUN([AM_PATH_LIBGCRYPT],[:])' > fake-am_path_libgcrypt.m4
+echo 'AC_DEFUN([AM_PATH_LIBGNUTLS],[:])' > fake-am_path_libgnutls.m4
+%endif
 
 %build
-echo 'AC_DEFUN([AM_PATH_LIBGCRYPT],[:])' > fake-am_path_libgcrypt.m4
-%{!?with_crypto:echo 'AC_DEFUN([AM_PATH_LIBGNUTLS],[:])' > fake-am_path_libgnutls.m4}
-
 %{__libtoolize}
 %{__aclocal} -I .
 %{__autoconf}
