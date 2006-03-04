@@ -1,8 +1,0 @@
---- ntfsprogs-1.9.0/getgccver.org	2003-10-24 11:51:36.000000000 +0000
-+++ ntfsprogs-1.9.0/getgccver	2003-10-24 11:53:31.000000000 +0000
-@@ -7,4 +7,4 @@
- 
- # Get the gcc version. Can't do this in configure.ac as automake refuses to
- # preserve the square brackets while generating the configure script.
--$1 --version 2>&1 | head -n 1 | sed s/"egcs-"// | sed s/"gcc (GCC) \([0-9]\.[0-9]*\).*"/"\1"/
-+$1 --version 2>&1 | head -n 1 | sed s/".* \([0-9]\.[0-9]*\).*"/"\1"/
