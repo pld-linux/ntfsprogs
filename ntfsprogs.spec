@@ -9,7 +9,7 @@ Summary(pl):	Narzêdzia i biblioteki do obs³ugi systemu plików NTFS
 Name:		ntfsprogs
 Version:	1.13.0
 %define	docver	0.5
-Release:	1
+Release:	1.1
 License:	GPL
 Group:		Applications/System
 Source0:	http://dl.sourceforge.net/linux-ntfs/%{name}-%{version}.tar.gz
@@ -17,6 +17,7 @@ Source0:	http://dl.sourceforge.net/linux-ntfs/%{name}-%{version}.tar.gz
 Source1:	http://dl.sourceforge.net/linux-ntfs/ntfsdoc-%{docver}.tar.bz2
 # Source1-md5:	d713836df621686785c3230e5788c689
 Patch0:		%{name}-pkgconfig.patch
+Patch1:		%{name}-stdarg_h-required.patch
 URL:		http://linux-ntfs.sf.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -127,6 +128,7 @@ Modu³ NTFS dla gnome-vfs.
 %prep
 %setup -q -a1
 %patch0 -p1
+%patch1 -p1
 
 %if %{without crypto}
 echo 'AC_DEFUN([AM_PATH_LIBGCRYPT],[:])' > fake-am_path_libgcrypt.m4
