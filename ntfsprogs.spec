@@ -18,7 +18,7 @@ Source1:	http://dl.sourceforge.net/linux-ntfs/ntfsdoc-%{docver}.tar.bz2
 # Source1-md5:	d713836df621686785c3230e5788c689
 Patch0:		%{name}-pkgconfig.patch
 Patch1:		%{name}-stdarg_h-required.patch
-URL:		http://linux-ntfs.sf.net/
+URL:		http://www.linux-ntfs.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gcc >= 3.1
