@@ -4,11 +4,11 @@
 %bcond_without	gnome		# don't build gnome-vfs2 module
 %bcond_without	fuse		# don't build ntfsmount utility
 #
+%define	docver	0.5
 Summary:	NTFS filesystem libraries and utilities
 Summary(pl):	Narzêdzia i biblioteki do obs³ugi systemu plików NTFS
 Name:		ntfsprogs
 Version:	1.13.0
-%define	docver	0.5
 Release:	2
 License:	GPL
 Group:		Applications/System
@@ -21,9 +21,9 @@ Patch1:		%{name}-stdarg_h-required.patch
 URL:		http://www.linux-ntfs.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	gcc >= 3.1
-%{?with_crypto:BuildRequires:	gnutls-devel >= 1.2.8}
+BuildRequires:	gcc >= 5:3.1
 %{?with_gnome:BuildRequires:	gnome-vfs2-devel >= 2.0}
+%{?with_crypto:BuildRequires:	gnutls-devel >= 1.2.8}
 %{?with_fuse:BuildRequires:	libfuse-devel >= 2.3.0}
 %{?with_crypto:BuildRequires:	libgcrypt-devel >= 1.2.0}
 BuildRequires:	libtool >= 1:1.4.2-9
