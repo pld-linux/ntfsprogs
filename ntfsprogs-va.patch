@@ -1,0 +1,56 @@
+--- ntfsprogs-1.13.0/libntfs/logging.c.orig	2006-02-22 15:15:58.000000000 +0100
++++ ntfsprogs-1.13.0/libntfs/logging.c	2006-06-14 11:50:53.000000000 +0200
+@@ -351,6 +351,7 @@
+ 	static char *reason = NULL;
+ 	int ret = 0;
+ 	int olderr = errno;
++	int noargs = 0;
+ 
+ 	if (level == NTFS_LOG_LEVEL_REASON) {
+ 		if (!reason)
+@@ -362,7 +363,7 @@
+ 			/* Rather than call ourselves, just drop through */
+ 			level = NTFS_LOG_LEVEL_PERROR;
+ 			format = "Couldn't create reason";
+-			args = NULL;
++			noargs = 1;
+ 			olderr = errno;
+ 		}
+ 	}
+@@ -393,6 +394,9 @@
+ 			ret += fprintf(stream, " : %s\n", strerror(olderr));
+ 	}
+ #endif
++	if (noargs)
++		syslog(LOG_NOTICE, format);
++	else
+ 	vsyslog(LOG_NOTICE, format, args);
+ 	ret = 1; /* FIXME: caclulate how many bytes had been written. */
+ 
+@@ -432,6 +436,7 @@
+ 	FILE *stream;
+ 	const char *col_prefix = NULL;
+ 	const char *col_suffix = NULL;
++	int noargs = 0;
+ 
+ 	if (!data)		/* Interpret data as a FILE stream. */
+ 		return 0;	/* If it's NULL, we can't do anything. */
+@@ -447,7 +452,7 @@
+ 			/* Rather than call ourselves, just drop through */
+ 			level = NTFS_LOG_LEVEL_PERROR;
+ 			format = "Couldn't create reason";
+-			args = NULL;
++			noargs = 1;
+ 			olderr = errno;
+ 		}
+ 	}
+@@ -499,6 +504,9 @@
+ 	    (level & NTFS_LOG_LEVEL_TRACE))
+ 		ret += fprintf(stream, "%s(): ", function);
+ 
++	if (noargs)
++		ret += fprintf(stream, format);
++	else
+ 	ret += vfprintf(stream, format, args);
+ 
+ 	if (level & NTFS_LOG_LEVEL_PERROR) {
