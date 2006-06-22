@@ -178,6 +178,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/ntfsinfo
 %attr(755,root,root) %{_bindir}/ntfscat
 %attr(755,root,root) %{_bindir}/ntfscluster
+%attr(755,root,root) %{_bindir}/ntfscmp
 %attr(755,root,root) %{_bindir}/ntfsls
 %attr(755,root,root) %{_sbindir}/mkntfs
 %attr(755,root,root) %{_sbindir}/ntfsclone
