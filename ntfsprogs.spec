@@ -132,7 +132,7 @@ Modu³ NTFS dla gnome-vfs.
 %patch1 -p1
 %patch2 -p1
 
-%if %{without crypto}
+%if !%{with crypto}
 echo 'AC_DEFUN([AM_PATH_LIBGCRYPT],[:])' > fake-am_path_libgcrypt.m4
 echo 'AC_DEFUN([AM_PATH_LIBGNUTLS],[:])' > fake-am_path_libgnutls.m4
 %endif
