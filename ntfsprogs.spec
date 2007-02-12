@@ -6,7 +6,7 @@
 #
 %define	docver	0.5
 Summary:	NTFS filesystem libraries and utilities
-Summary(pl):	Narzêdzia i biblioteki do obs³ugi systemu plików NTFS
+Summary(pl.UTF-8):   NarzÄ™dzia i biblioteki do obsÅ‚ugi systemu plikÃ³w NTFS
 Name:		ntfsprogs
 Version:	1.13.1
 Release:	1
@@ -51,26 +51,26 @@ contains the following utilities:
 
 You can find more information about these utilities in their manuals.
 
-%description -l pl
-Projekt Linux-NTFS ma na celu dostarczyæ pe³n± obs³ugê NTFS pod
-Linuksem. Aktualnie sk³ada siê z biblioteki i narzêdzi. Pakiet zawiera
-nastêpuj±ce narzêdzia:
+%description -l pl.UTF-8
+Projekt Linux-NTFS ma na celu dostarczyÄ‡ peÅ‚nÄ… obsÅ‚ugÄ™ NTFS pod
+Linuksem. Aktualnie skÅ‚ada siÄ™ z biblioteki i narzÄ™dzi. Pakiet zawiera
+nastÄ™pujÄ…ce narzÄ™dzia:
 
-- ntfsfix - próbuje naprawiaæ partycjê NTFS uszkodzone przez linuksowy
-  sterownik do NTFS. Powinien byæ uruchamiany po ka¿dym zapisie na
-  partycji NTFS, aby zapobiec masowemu zniszczeniu danych. WA¯NE: nale¿y
-  uruchamiaæ ten program tylko *po* odmontowaniu partycji pod Linuksem,
+- ntfsfix - prÃ³buje naprawiaÄ‡ partycjÄ™ NTFS uszkodzone przez linuksowy
+  sterownik do NTFS. Powinien byÄ‡ uruchamiany po kaÅ¼dym zapisie na
+  partycji NTFS, aby zapobiec masowemu zniszczeniu danych. WAÅ»NE: naleÅ¼y
+  uruchamiaÄ‡ ten program tylko *po* odmontowaniu partycji pod Linuksem,
   ale *przed* uruchomieniem Windows NT/2000!
-- mkntfs - "formatuje" partycjê NTFS.
-- ntfslabel - wy¶wietla/zmienia etykietê partycji NTFS.
-- ntfsundelete - odzyskuje usuniête pliki z wolumenu NTFS.
+- mkntfs - "formatuje" partycjÄ™ NTFS.
+- ntfslabel - wyÅ›wietla/zmienia etykietÄ™ partycji NTFS.
+- ntfsundelete - odzyskuje usuniÄ™te pliki z wolumenu NTFS.
 - ntfsresize - zmienia rozmiar wolumenu NTFS.
 
-Wiêcej informacji na temat tych narzêdzi mo¿na znale¼æ w manualach.
+WiÄ™cej informacji na temat tych narzÄ™dzi moÅ¼na znaleÅºÄ‡ w manualach.
 
 %package devel
 Summary:	Files required to compile software that uses libntfs
-Summary(pl):	Pliki potrzebne do kompilowania programów korzystaj±cych z libntfs
+Summary(pl.UTF-8):   Pliki potrzebne do kompilowania programÃ³w korzystajÄ…cych z libntfs
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Obsoletes:	linux-ntfs-devel
@@ -79,13 +79,13 @@ Obsoletes:	linux-ntfs-devel
 This package includes the header files needed to link software with
 libntfs.
 
-%description devel -l pl
-Pliki nag³ówkowe potrzebne do budowania programów korzystaj±cych z
+%description devel -l pl.UTF-8
+Pliki nagÅ‚Ã³wkowe potrzebne do budowania programÃ³w korzystajÄ…cych z
 libntfs.
 
 %package static
 Summary:	Static version of libntfs
-Summary(pl):	Statyczna wersja libntfs
+Summary(pl.UTF-8):   Statyczna wersja libntfs
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 Obsoletes:	linux-ntfs-static
@@ -93,12 +93,12 @@ Obsoletes:	linux-ntfs-static
 %description static
 This package contains the static version of libntfs library.
 
-%description static -l pl
-Ten pakiet zawiera statyczn± wersjê biblioteki libntfs.
+%description static -l pl.UTF-8
+Ten pakiet zawiera statycznÄ… wersjÄ™ biblioteki libntfs.
 
 %package fuse
 Summary:	NTFS FUSE module (ntfsmount)
-Summary(pl):	Modu³ FUSE dla NTFS (ntfsmount)
+Summary(pl.UTF-8):   ModuÅ‚ FUSE dla NTFS (ntfsmount)
 Group:		Base/Utilities
 Requires:	%{name} = %{version}-%{release}
 
@@ -108,23 +108,23 @@ filesystem in userspace (FUSE) module allowing users to mount an NTFS
 filesystem from userspace and accessing it using the functionality
 provided by the NTFS library (libntfs).
 
-%description fuse -l pl
-Pakiet zawiera narzêdzie ntfmount, które jest modu³em FUSE
-pozwalaj±cym u¿ytkownikom na dostêp do systemu plików NTFS w
-przestrzeni u¿ytkownika wykorzystuj±c funkcjonalno¶æ biblioteki
+%description fuse -l pl.UTF-8
+Pakiet zawiera narzÄ™dzie ntfmount, ktÃ³re jest moduÅ‚em FUSE
+pozwalajÄ…cym uÅ¼ytkownikom na dostÄ™p do systemu plikÃ³w NTFS w
+przestrzeni uÅ¼ytkownika wykorzystujÄ…c funkcjonalnoÅ›Ä‡ biblioteki
 libntfs.
 
 %package -n gnome-vfs2-module-ntfs
 Summary:	NTFS module for gnome-vfs
-Summary(pl):	Modu³ NTFS dla gnome-vfs
+Summary(pl.UTF-8):   ModuÅ‚ NTFS dla gnome-vfs
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description -n gnome-vfs2-module-ntfs
 NTFS module for gnome-vfs.
 
-%description -n gnome-vfs2-module-ntfs -l pl
-Modu³ NTFS dla gnome-vfs.
+%description -n gnome-vfs2-module-ntfs -l pl.UTF-8
+ModuÅ‚ NTFS dla gnome-vfs.
 
 %prep
 %setup -q -a1
