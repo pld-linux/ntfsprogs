@@ -6,7 +6,7 @@
 #
 %define	docver	0.5
 Summary:	NTFS filesystem libraries and utilities
-Summary(pl.UTF-8):   Narzędzia i biblioteki do obsługi systemu plików NTFS
+Summary(pl.UTF-8):	Narzędzia i biblioteki do obsługi systemu plików NTFS
 Name:		ntfsprogs
 Version:	1.13.1
 Release:	1
@@ -70,7 +70,7 @@ Więcej informacji na temat tych narzędzi można znaleźć w manualach.
 
 %package devel
 Summary:	Files required to compile software that uses libntfs
-Summary(pl.UTF-8):   Pliki potrzebne do kompilowania programów korzystających z libntfs
+Summary(pl.UTF-8):	Pliki potrzebne do kompilowania programów korzystających z libntfs
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Obsoletes:	linux-ntfs-devel
@@ -85,7 +85,7 @@ libntfs.
 
 %package static
 Summary:	Static version of libntfs
-Summary(pl.UTF-8):   Statyczna wersja libntfs
+Summary(pl.UTF-8):	Statyczna wersja libntfs
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 Obsoletes:	linux-ntfs-static
@@ -98,7 +98,7 @@ Ten pakiet zawiera statyczną wersję biblioteki libntfs.
 
 %package fuse
 Summary:	NTFS FUSE module (ntfsmount)
-Summary(pl.UTF-8):   Moduł FUSE dla NTFS (ntfsmount)
+Summary(pl.UTF-8):	Moduł FUSE dla NTFS (ntfsmount)
 Group:		Base/Utilities
 Requires:	%{name} = %{version}-%{release}
 
@@ -116,7 +116,7 @@ libntfs.
 
 %package -n gnome-vfs2-module-ntfs
 Summary:	NTFS module for gnome-vfs
-Summary(pl.UTF-8):   Moduł NTFS dla gnome-vfs
+Summary(pl.UTF-8):	Moduł NTFS dla gnome-vfs
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 
