@@ -27,7 +27,7 @@ BuildRequires:	gcc >= 5:3.1
 %{?with_crypto:BuildRequires:	gnutls-devel >= 1.2.8}
 %{?with_fuse:BuildRequires:	libfuse-devel >= 2.3.0}
 %{?with_crypto:BuildRequires:	libgcrypt-devel >= 1.2.0}
-BuildRequires:	libconfig >= 1.1.3
+BuildRequires:	libconfig-devel >= 1.1.3
 BuildRequires:	libtool >= 1:1.4.2-9
 BuildRequires:	pkgconfig
 Obsoletes:	linux-ntfs
