@@ -44,11 +44,14 @@ contains the following utilities:
   the Linux NTFS driver to write to an NTFS partition to prevent massive
   data corruption from happening when Windows mounts the partition.
   IMPORTANT: Run this only *after* unmounting the partition in Linux but
-  *before* rebooting into Windows NT/2000!
-- mkntfs - format a partition with the NTFS filesystem.
-- ntfslabel - display/change the label of an NTFS partition.
-- ntfsundelete - recover deleted files from an NTFS volume.
-- ntfsresize - resize an NTFS volume.
+  *before* rebooting into Windows NT/2000!,
+- mkntfs - create partition with the NTFS filesystem,
+- ntfslabel - display/change the label of an NTFS partition,
+- ntfsundelete - recover deleted files from an NTFS volume,
+- ntfsresize - resize an NTFS volume,
+- ntfsclone - clone, image, restore or rescue NTFS,
+- ntfswipe - wipe junk from unused space,
+- ntfsdecrypt - descrypt $EFS-encrypted files.
 
 You can find more information about these utilities in their manuals.
 
@@ -66,6 +69,9 @@ następujące narzędzia:
 - ntfslabel - wyświetla/zmienia etykietę partycji NTFS.
 - ntfsundelete - odzyskuje usunięte pliki z wolumenu NTFS.
 - ntfsresize - zmienia rozmiar wolumenu NTFS.
+- ntfsclone
+- ntfswipe
+- ntfsdecrypt
 
 Więcej informacji na temat tych narzędzi można znaleźć w manualach.
 
