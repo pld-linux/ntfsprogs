@@ -18,7 +18,6 @@ Source1:	http://dl.sourceforge.net/linux-ntfs/ntfsdoc-%{docver}.tar.bz2
 # Source1-md5:	d713836df621686785c3230e5788c689
 Patch0:		%{name}-pkgconfig.patch
 Patch1:		%{name}-stdarg_h-required.patch
-Patch2:		%{name}-va.patch
 URL:		http://www.linux-ntfs.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -137,7 +136,6 @@ Moduł NTFS dla gnome-vfs.
 %setup -q -a1
 %patch0 -p1
 %patch1 -p1
-#%patch2 -p1
 
 %if !%{with crypto}
 echo 'AC_DEFUN([AM_PATH_LIBGCRYPT],[:])' > fake-am_path_libgcrypt.m4
@@ -180,7 +178,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS CREDITS ChangeLog NEWS README TODO*
+%doc AUTHORS CREDITS ChangeLog NEWS README TODO* libntfs/config
 %attr(755,root,root) %{_bindir}/ntfsfix
 %attr(755,root,root) %{_bindir}/ntfsinfo
 %attr(755,root,root) %{_bindir}/ntfscat
@@ -194,7 +192,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_sbindir}/ntfsresize
 %attr(755,root,root) %{_sbindir}/ntfsundelete
 %attr(755,root,root) /sbin/mkfs.ntfs
-%attr(755,root,root) %{_libdir}/lib*.so.*.*
+%attr(755,root,root) %{_libdir}/libntfs.so.*.*.*
+%{_mandir}/man8/libntfs.8*
 %{_mandir}/man8/mkfs.ntfs.8*
 %{_mandir}/man8/mkntfs.8*
 %{_mandir}/man8/ntfs[!m][!o]*.8*
@@ -202,14 +201,13 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %doc ntfsdoc-*/* doc/{attribute_definitions,tunable_settings,*.txt}
-%attr(755,root,root) %{_libdir}/lib*.so
-%{_libdir}/*.la
-%{_includedir}/*
-%{_mandir}/man8/libntfs.8*
+%attr(755,root,root) %{_libdir}/libntfs.so
+%{_libdir}/libntfs.la
+%{_includedir}/ntfs
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/lib*.a
+%{_libdir}/libntfs.a
 
 %if %{with fuse}
 %files fuse
