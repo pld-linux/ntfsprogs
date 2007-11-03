@@ -16,8 +16,7 @@ Source0:	http://dl.sourceforge.net/linux-ntfs/%{name}-%{version}.tar.bz2
 # Source0-md5:	2b39dece8897bc748f4ab4c40ec7699e
 Source1:	http://dl.sourceforge.net/linux-ntfs/ntfsdoc-%{docver}.tar.bz2
 # Source1-md5:	d713836df621686785c3230e5788c689
-Patch0:		%{name}-pkgconfig.patch
-Patch1:		%{name}-stdarg_h-required.patch
+Patch0:		%{name}-stdarg_h-required.patch
 URL:		http://www.linux-ntfs.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -135,7 +134,6 @@ Moduł NTFS dla gnome-vfs.
 %prep
 %setup -q -a1
 %patch0 -p1
-%patch1 -p1
 
 %if !%{with crypto}
 echo 'AC_DEFUN([AM_PATH_LIBGCRYPT],[:])' > fake-am_path_libgcrypt.m4
