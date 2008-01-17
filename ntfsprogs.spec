@@ -9,7 +9,7 @@ Summary:	NTFS filesystem libraries and utilities
 Summary(pl.UTF-8):	Narzędzia i biblioteki do obsługi systemu plików NTFS
 Name:		ntfsprogs
 Version:	2.0.0
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/System
 Source0:	http://dl.sourceforge.net/linux-ntfs/%{name}-%{version}.tar.bz2
