@@ -164,9 +164,10 @@ rm -rf $RPM_BUILD_ROOT
 
 rm -f $RPM_BUILD_ROOT%{_libdir}/gnome-vfs-2.0/modules/lib*.{la,a}
 # instead of symlinks
-rm -f $RPM_BUILD_ROOT%{_mandir}/man8/{mkfs.ntfs,mount.ntfs-fuse}.8
+rm -f $RPM_BUILD_ROOT%{_mandir}/man8/{mkfs.ntfs,mount.fuse.ntfs,mount.ntfs-fuse}.8
 echo '.so mkntfs.8' > $RPM_BUILD_ROOT%{_mandir}/man8/mkfs.ntfs.8
 echo '.so ntfsmount.8' > $RPM_BUILD_ROOT%{_mandir}/man8/mount.ntfs-fuse.8
+echo '.so ntfsmount.8' > $RPM_BUILD_ROOT%{_mandir}/man8/mount.fuse.ntfs.8
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -177,11 +178,11 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS CREDITS ChangeLog NEWS README TODO* libntfs/config
-%attr(755,root,root) %{_bindir}/ntfsfix
-%attr(755,root,root) %{_bindir}/ntfsinfo
 %attr(755,root,root) %{_bindir}/ntfscat
 %attr(755,root,root) %{_bindir}/ntfscluster
 %attr(755,root,root) %{_bindir}/ntfscmp
+%attr(755,root,root) %{_bindir}/ntfsfix
+%attr(755,root,root) %{_bindir}/ntfsinfo
 %attr(755,root,root) %{_bindir}/ntfsls
 %attr(755,root,root) %{_sbindir}/mkntfs
 %attr(755,root,root) %{_sbindir}/ntfsclone
@@ -191,10 +192,22 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_sbindir}/ntfsundelete
 %attr(755,root,root) /sbin/mkfs.ntfs
 %attr(755,root,root) %{_libdir}/libntfs.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libntfs.so.10
 %{_mandir}/man8/libntfs.8*
 %{_mandir}/man8/mkfs.ntfs.8*
 %{_mandir}/man8/mkntfs.8*
-%{_mandir}/man8/ntfs[!m][!o]*.8*
+%{_mandir}/man8/ntfscat.8*
+%{_mandir}/man8/ntfsclone.8*
+%{_mandir}/man8/ntfscluster.8*
+%{_mandir}/man8/ntfscmp.8*
+%{_mandir}/man8/ntfscp.8*
+%{_mandir}/man8/ntfsfix.8*
+%{_mandir}/man8/ntfsinfo.8*
+%{_mandir}/man8/ntfslabel.8*
+%{_mandir}/man8/ntfsls.8*
+%{_mandir}/man8/ntfsprogs.8*
+%{_mandir}/man8/ntfsresize.8*
+%{_mandir}/man8/ntfsundelete.8*
 
 %files devel
 %defattr(644,root,root,755)
@@ -211,7 +224,9 @@ rm -rf $RPM_BUILD_ROOT
 %files fuse
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/ntfsmount
+%attr(755,root,root) /sbin/mount.fuse.ntfs
 %attr(755,root,root) /sbin/mount.ntfs-fuse
+%{_mandir}/man8/mount.fuse.ntfs.8*
 %{_mandir}/man8/mount.ntfs-fuse.8*
 %{_mandir}/man8/ntfsmount.8*
 %endif
