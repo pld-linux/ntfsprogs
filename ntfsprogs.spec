@@ -9,7 +9,7 @@ Summary:	NTFS filesystem libraries and utilities
 Summary(pl.UTF-8):	Narzędzia i biblioteki do obsługi systemu plików NTFS
 Name:		ntfsprogs
 Version:	2.0.0
-Release:	4
+Release:	5
 License:	GPL v2+
 Group:		Applications/System
 Source0:	http://dl.sourceforge.net/linux-ntfs/%{name}-%{version}.tar.bz2
@@ -17,12 +17,13 @@ Source0:	http://dl.sourceforge.net/linux-ntfs/%{name}-%{version}.tar.bz2
 Source1:	http://dl.sourceforge.net/linux-ntfs/ntfsdoc-%{docver}.tar.bz2
 # Source1-md5:	d713836df621686785c3230e5788c689
 Patch0:		%{name}-stdarg_h-required.patch
+Patch1:		%{name}-gnutls.patch
 URL:		http://www.linux-ntfs.org/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake
 BuildRequires:	gcc >= 5:3.1
 %{?with_gnome:BuildRequires:	gnome-vfs2-devel >= 2.0}
-%{?with_crypto:BuildRequires:	gnutls-devel >= 1.2.8}
+%{?with_crypto:BuildRequires:	gnutls-devel >= 2.8.0}
 %{?with_fuse:BuildRequires:	libfuse-devel >= 2.3.0}
 %{?with_crypto:BuildRequires:	libgcrypt-devel >= 1.2.0}
 BuildRequires:	libconfig-devel >= 1.1.3
@@ -134,6 +135,7 @@ Moduł NTFS dla gnome-vfs.
 %prep
 %setup -q -a1
 %patch0 -p1
+%patch1 -p1
 
 %if !%{with crypto}
 echo 'AC_DEFUN([AM_PATH_LIBGCRYPT],[:])' > fake-am_path_libgcrypt.m4
